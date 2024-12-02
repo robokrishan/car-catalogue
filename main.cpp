@@ -2,7 +2,7 @@
 #include <string>
 
 // #define LINKED_LIST
-// #define DOUBLY_LINKED_LIST
+#define DOUBLY_LINKED_LIST
 
 #ifdef LINKED_LIST
 #include "linked_list/linked_list.h"
