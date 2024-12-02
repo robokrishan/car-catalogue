@@ -1,5 +1,5 @@
-#ifndef CARS_H
-#define CARS_H
+#ifndef CAR_H
+#define CAR_H
 
 #include <iostream>
 #include <string>
@@ -81,4 +81,4 @@ class Car {
         Fuel_t getFuel(void) const;
 };
 
-#endif /* CARS_H */
+#endif /* CAR_H */
