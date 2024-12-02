@@ -1,0 +1,85 @@
+Brand,Model,Segment,Body,Year,Cubic_Capacity,Cylinders,Fuel
+Mercedes-Benz,C200,C-Class,W205,2014 - 2020,2.0,4,Petrol
+Mercedes-Benz,C250,C-Class,W205,2014 - 2020,2.0,4,Petrol
+Mercedes-Benz,C300,C-Class,W205,2014 - 2020,2.0,4,Petrol
+Mercedes-Benz,C200d,C-Class,W205,2014 - 2020,1.6,4,Diesel
+Mercedes-Benz,C200d,C-Class,W205,2014 - 2020,2.1,4,Diesel
+Mercedes-Benz,C220d,C-Class,W205,2014 - 2020,2.1,4,Diesel
+Mercedes-Benz,C250d,C-Class,W205,2014 - 2020,2.1,4,Diesel
+Mercedes-Benz,E200,E-Class,W213,2016 - 2022,2.0,4,Petrol
+Mercedes-Benz,E250,E-Class,W213,2016 - 2022,2.0,4,Petrol
+Mercedes-Benz,E300,E-Class,W213,2016 - 2022,2.0,4,Petrol
+Mercedes-Benz,E350,E-Class,W213,2016 - 2022,2.0,4,Petrol
+Mercedes-Benz,E200d,E-Class,W213,2016 - 2022,2.0,4,Diesel
+Mercedes-Benz,E200d,E-Class,W213,2016 - 2022,1.6,4,Diesel
+Mercedes-Benz,E220d,E-Class,W213,2016 - 2022,2.0,4,Diesel
+Mercedes-Benz,E300d,E-Class,W213,2016 - 2022,2.0,4,Diesel
+Mercedes-Benz,E350d,E-Class,W213,2016 - 2022,3.0,6,Diesel
+Mercedes-Benz,E400d,E-Class,W213,2016 - 2022,3.0,6,Diesel
+Mercedes-Benz,S300,S-Class,W221,2006 - 2013,3.0,6,Petrol
+Mercedes-Benz,S350,S-Class,W221,2006 - 2013,3.5,6,Petrol
+Mercedes-Benz,S400,S-Class,W221,2006 - 2013,3.5,6,Petrol
+Mercedes-Benz,S450,S-Class,W221,2006 - 2013,4.7,8,Petrol
+Mercedes-Benz,S500,S-Class,W221,2006 - 2013,4.7,8,Petrol
+Mercedes-Benz,S500,S-Class,W221,2006 - 2013,5.5,8,Petrol
+Mercedes-Benz,S550,S-Class,W221,2006 - 2013,5.5,8,Petrol
+Mercedes-Benz,S600,S-Class,W221,2006 - 2013,5.5,8,Petrol
+Mercedes-Benz,S250 CDI,S-Class,W221,2006 - 2013,2.1,4,Diesel
+Mercedes-Benz,S300 CDI,S-Class,W221,2006 - 2013,2.1,4,Diesel
+Mercedes-Benz,S300,S-Class,W221,2006 - 2013,3.0,6,Diesel
+Mercedes-Benz,S320 CDI,S-Class,W221,2006 - 2013,3.0,6,Diesel
+Mercedes-Benz,S350 CDI,S-Class,W221,2006 - 2013,3.0,6,Diesel
+Mercedes-Benz,S420 CDI,S-Class,W221,2006 - 2013,4.0,8,Diesel
+Mercedes-Benz,S450 CDI,S-Class,W221,2006 - 2013,4.0,8,Diesel
+BMW,320i,3-Series,F30,2012 - 2017,2.0,4,Petrol
+BMW,328i,3-Series,F30,2012 - 2017,2.0,4,Petrol
+BMW,330i,3-Series,F30,2012 - 2017,2.0,4,Petrol
+BMW,335i,3-Series,F30,2012 - 2017,3.0,6,Petrol
+BMW,340i,3-Series,F30,2012 - 2017,3.0,6,Petrol
+BMW,316d,3-Series,F30,2012 - 2017,2.0,4,Diesel
+BMW,318d,3-Series,F30,2012 - 2017,2.0,4,Diesel
+BMW,320d,3-Series,F30,2012 - 2017,2.0,4,Diesel
+BMW,325d,3-Series,F30,2012 - 2017,2.0,4,Diesel
+BMW,330d,3-Series,F30,2012 - 2017,3.0,6,Diesel
+BMW,335d,3-Series,F30,2012 - 2017,3.0,6,Diesel
+BMW,520i,5-Series,F10,2010 - 2016,2.0,4,Petrol
+BMW,528i,5-Series,F10,2010 - 2016,2.0,4,Petrol
+BMW,528i,5-Series,F10,2010 - 2016,3.0,6,Petrol
+BMW,535i,5-Series,F10,2010 - 2016,3.0,6,Petrol
+BMW,518d,5-Series,F10,2010 - 2016,2.0,4,Diesel
+BMW,520d,5-Series,F10,2010 - 2016,2.0,4,Diesel
+BMW,525d,5-Series,F10,2010 - 2016,2.0,4,Diesel
+BMW,525d,5-Series,F10,2010 - 2016,3.0,6,Diesel
+BMW,530d,5-Series,F10,2010 - 2016,3.0,6,Diesel
+BMW,535d,5-Series,F10,2010 - 2016,3.0,6,Diesel
+BMW,730i,7-Series,F01,2008 - 2015,3.0,6,Petrol
+BMW,740i,7-Series,F01,2008 - 2015,3.0,6,Petrol
+BMW,750i,7-Series,F01,2008 - 2015,4.4,8,Petrol
+BMW,730d,7-Series,F01,2008 - 2015,3.0,6,Diesel
+BMW,740d,7-Series,F01,2008 - 2015,3.0,6,Diesel
+BMW,750d,7-Series,F01,2008 - 2015,3.0,6,Diesel
+Audi,A6,6,C7 - Typ 4G,2012 - 2015,2.0,4,Petrol
+Audi,A6,6,C7 - Typ 4G,2012 - 2015,2.0,4,Diesel
+Audi,A6,6,C7 - Typ 4G,2012 - 2015,3.0,6,Petrol
+Audi,A6,6,C7 - Typ 4G,2012 - 2015,3.0,6,Diesel
+Audi,A6,6,Typ 4G Facelift,2015 - 2018,2.0,4,Petrol
+Audi,A6,6,Typ 4G Facelift,2015 - 2018,2.0,4,Diesel
+Audi,A6,6,Typ 4G Facelift,2015 - 2018,3.0,6,Petrol
+Audi,A6,6,Typ 4G Facelift,2015 - 2018,3.0,6,Diesel
+Audi,A7,7,C7 - Typ 4G8,2010 - 2015,2.0,4,Petrol
+Audi,A7,7,C7 - Typ 4G8,2010 - 2015,2.8,6,Petrol
+Audi,A7,7,C7 - Typ 4G8,2010 - 2015,3.0,6,Petrol
+Audi,A7,7,C7 - Typ 4G8,2010 - 2015,4.0,8,Petrol
+Audi,A7,7,Typ 4G8 Facelift,2015 - 2018,2.0,4,Petrol
+Audi,A7,7,Typ 4G8 Facelift,2015 - 2018,2.8,6,Petrol
+Audi,A7,7,Typ 4G8 Facelift,2015 - 2018,3.0,6,Petrol
+Audi,A7,7,Typ 4G8 Facelift,2015 - 2018,4.0,8,Petrol
+Audi,A7,7,C7 - Typ 4G8,2010 - 2015,3.0,6,Diesel
+Audi,A7,7,Typ 4G8 Facelift,2015 - 2018,3.0,6,Diesel
+Land Rover,Range Rover Sport TDV6,Range Rover,L320,2005 - 2009,2.7,6,Diesel
+Land Rover,Range Rover Sport TDV6,Range Rover,L320,2009 - 2013,3.0,6,Diesel
+Land Rover,Range Rover Sport TDV8,Range Rover,L320,2006 - 2013,3.6,8,Diesel
+Land Rover,Range Rover Sport SDV6,Range Rover,L320,2011 - 2013,3.0,6,Diesel
+Land Rover,Range Rover Sport V8,Range Rover,L320,2005 - 2009,4.4,8,Petrol
+Land Rover,Range Rover Sport V8,Range Rover,L320,2005 - 2009,4.2,8,Petrol
+Land Rover,Range Rover Sport V8,Range Rover,L320,2009 - 2013,5.0,8,Petrol
