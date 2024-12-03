@@ -3,28 +3,18 @@
 
 #include <iostream>
 #include <string>
+#include "engine.h"
 
 using namespace std;
 
-enum Fuel_t {
-    NONE = -1,
-    PETROL = 0,
-    DIESEL = 1,
-};
-
 class Car {
     private:
-        static const string fuelPetrol;
-        static const string fuelDiesel;
-
         string szBrand;
         string szModel;
         string szSegment;
         string szBody;
         uint16_t uwYearLow, uwYearHigh;
-        float fCubicCapacity;
-        uint8_t ubCylinders;
-        Fuel_t eFuel;
+        Engine sEngine;
         
     public:
         Car();
@@ -36,17 +26,13 @@ class Car {
             string newBody,
             uint16_t yearLow,
             uint16_t yearHigh,
-            float newCapacity,
-            uint8_t newCylinders,
-            Fuel_t newFuel);
-        Car(string newBrand,
-            string newModel,
-            string newSegment,
+            Engine engine);
+        Car(string newBrand, 
+            string newModel, 
+            string newSegment, 
             string newBody,
-            string yearRange,
-            string newCapacity,
-            string newCylinders,
-            string newFuel);
+            string yearRange, 
+            Engine engine);
         ~Car();
 
         void setBrand(const string& newBrand);
@@ -67,18 +53,10 @@ class Car {
         uint16_t getYearLow(void) const;
         uint16_t getYearHigh(void) const;
 
-        void setCapacity(const string& newCapacity);
-        void setCapacity(float newCapacity);
-        float getCapacity(void) const;
+        void setEngine(const Engine engine);
+        Engine getEngine(void) const;
 
-        void setCylinders(const string& newCylinders);
-        void setCylinders(uint8_t newCylinders);
-        uint8_t getCylinders(void) const;
-
-        void setFuel(const string& newFuel);
-        void setFuel(Fuel_t newFuel);
-        string getFuelString(void) const;
-        Fuel_t getFuel(void) const;
+        void display(void) const;
 };
 
 #endif /* CAR_H */

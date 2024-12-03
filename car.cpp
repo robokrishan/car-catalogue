@@ -1,13 +1,7 @@
-#include <iostream>
 #include <sstream>
 #include "car.h"
 
 using namespace std;
-
-
-// constants
-const string Car::fuelPetrol = "Petrol";
-const string Car::fuelDiesel = "Diesel";
 
 
 // constructors
@@ -17,21 +11,23 @@ Car::Car() {
     setSegment("");
     setBody("");
     setYearRange(-1, -1);
-    setCapacity(-1.0);
-    setCylinders(-1);
-    setFuel(NONE);
+    setEngine(Engine());
 }
 
-Car::Car(const Car& car) : szBrand(car.szBrand), szModel(car.szModel),
-                            szSegment(car.szSegment), szBody(car.szBody),
-                            uwYearLow(car.uwYearLow), uwYearHigh(car.uwYearHigh),
-                            fCubicCapacity(car.fCubicCapacity),
-                            ubCylinders(car.ubCylinders), eFuel(car.eFuel) {}
+Car::Car(const Car& car) : szBrand(car.szBrand), 
+                            szModel(car.szModel),
+                            szSegment(car.szSegment), 
+                            szBody(car.szBody),
+                            uwYearLow(car.uwYearLow), 
+                            uwYearHigh(car.uwYearHigh),
+                            sEngine(car.sEngine)
+                            {}
 
 Car::Car(string line_csv) {
     istringstream ss(line_csv);
 
     string szBrand, szModel, szBody, szSegment, szYearRange;
+    string szEngine, szPower, szTorque, szIntake;
     string szCubicCapacity, szCylinders, szFuel;
 
     if (getline(ss, szBrand, ',') && 
@@ -39,48 +35,64 @@ Car::Car(string line_csv) {
         getline(ss, szSegment, ',') &&
         getline(ss, szBody, ',') &&
         getline(ss, szYearRange, ',') &&
+        getline(ss, szEngine, ',') &&
+        getline(ss, szPower, ',') &&
+        getline(ss, szTorque, ',') &&
+        getline(ss, szIntake, ',') &&
         getline(ss, szCubicCapacity, ',') &&
         getline(ss, szCylinders, ',') &&
         getline(ss, szFuel, ',')) {
-        *this = Car(szBrand, szModel, szSegment, szBody, 
-                    szYearRange, szCubicCapacity, 
-                    szCylinders, szFuel);
+        *this = Car(szBrand, 
+                    szModel, 
+                    szSegment, 
+                    szBody, 
+                    szYearRange, 
+                    Engine(szEngine, 
+                            szPower,
+                            szTorque,
+                            szIntake,
+                            szCubicCapacity,
+                            szCylinders,
+                            szFuel));
     } else {
         cerr << "Invalid input format!" << endl;
     }
 }
 
-Car::Car(string newBrand, string newModel, string newSegment, string newBody,
-            uint16_t yearLow, uint16_t yearHigh,
-            float newCapacity, uint8_t newCylinders, Fuel_t newFuel) {
+Car::Car(string newBrand, 
+            string newModel, 
+            string newSegment, 
+            string newBody,
+            uint16_t yearLow, 
+            uint16_t yearHigh,
+            Engine engine) {
     setBrand(newBrand);
     setModel(newModel);
     setSegment(newSegment);
     setBody(newBody);
     setYearRange(yearLow, yearHigh);
-    setCapacity(newCapacity);
-    setCylinders(newCylinders);
-    setFuel(newFuel);
+    setEngine(engine);
 }
 
-Car::Car(string newBrand, string newModel, string newSegment, string newBody,
-            string yearRange, string newCapacity,
-            string newCylinders, string newFuel) {
+Car::Car(string newBrand, 
+            string newModel, 
+            string newSegment, 
+            string newBody,
+            string yearRange, 
+            Engine engine) {
     setBrand(newBrand);
     setModel(newModel);
     setSegment(newSegment);
     setBody(newBody);
     setYearRange(yearRange);
-    setCapacity(newCapacity);
-    setCylinders(newCylinders);
-    setFuel(newFuel);
+    setEngine(engine);
 }
 
 
 // destructors
 Car::~Car() {}
 
-// setters and getters
+// brand
 void Car::setBrand(const string& newBrand) {
     szBrand = newBrand;
 }
@@ -89,6 +101,8 @@ string Car::getBrand() const {
     return szBrand;
 }
 
+
+// model
 void Car::setModel(const string& newModel) {
     szModel = newModel;
 }
@@ -97,6 +111,8 @@ string Car::getModel() const {
     return szModel;
 }
 
+
+// segment
 void Car::setSegment(const string& newSegment) {
     szSegment = newSegment;
 }
@@ -105,6 +121,8 @@ string Car::getSegment() const {
     return szSegment;
 }
 
+
+// body
 void Car::setBody(const string& newBody) {
     szBody = newBody;
 }
@@ -113,6 +131,8 @@ string Car::getBody() const {
     return szBody;
 }
 
+
+// year
 void Car::setYearRange(const string& newRange) {
     istringstream iss(newRange);
     char delimiter;
@@ -145,67 +165,36 @@ uint16_t Car::getYearHigh() const {
     return uwYearHigh;
 }
 
-void Car::setCapacity(const string& newCapacity) {
-    try {
-        fCubicCapacity = stof(newCapacity);
-    } catch (const invalid_argument&) {
-        cerr << "Invalid capacity format!" << endl;
-    } catch (const out_of_range&) {
-        cerr << "Capacity out of range!" << endl;
-    }
+
+// engine
+void Car::setEngine(const Engine engine) {
+    this->sEngine.setName(engine.getName());
+    this->sEngine.setPowerHp(engine.getPowerHp());
+    this->sEngine.setTorqueNm(engine.getTorqueNm());
+    this->sEngine.setIntake(engine.getIntake());
+    this->sEngine.setCapacity(engine.getCapacity());
+    this->sEngine.setCylinders(engine.getCylinders());
+    this->sEngine.setFuel(engine.getFuel());
 }
 
-void Car::setCapacity(float newCapacity) {
-    fCubicCapacity = newCapacity;
+Engine Car::getEngine() const {
+    return this->sEngine;
 }
 
-float Car::getCapacity() const {
-    return fCubicCapacity;
+
+// display
+void Car::display() const {
+    cout << "                          |" << endl;
+    cout << "|-------------------------------------------------|\n";
+
+    printf("\tBrand:\t\t%s\n", this->getBrand().c_str());
+    printf("\tModel:\t\t%s\n", this->getModel().c_str());
+    printf("\tSegment:\t%s\n", this->getSegment().c_str());
+    printf("\tBody:\t\t%s\n", this->getBody().c_str());
+    printf("\tYears:\t\t%d - %d\n", this->getYearLow(), this->getYearHigh());
+
+    this->sEngine.display();
+
+    cout << "|-------------------------------------------------|\n";
+    cout << "                          |" << endl;
 }
-
-void Car::setCylinders(const string& newCylinders) {
-    try {
-        ubCylinders = (uint8_t)stoi(newCylinders.c_str());
-    } catch (const invalid_argument&) {
-        cerr << "Invalid number of cylinders format!" << endl;
-    } catch (const out_of_range&) {
-        cerr << "Number of cylinders out of range!" << endl;
-    }
-}
-
-void Car::setCylinders(uint8_t newCylinders) {
-    ubCylinders = newCylinders;
-}
-
-uint8_t Car::getCylinders() const {
-    return this->ubCylinders;
-}
-
-void Car::setFuel(const string& newFuel) {
-    if (newFuel == fuelPetrol) {
-        this->eFuel = PETROL;
-    } else if (newFuel == fuelDiesel) {
-        this->eFuel = DIESEL;
-    } else {
-        this->eFuel = NONE;
-    }
-}
-
-void Car::setFuel(Fuel_t newFuel) {
-    this->eFuel = newFuel;
-    cout << "Set fuel to " << this->getFuelString() << endl;
-}
-
-string Car::getFuelString() const {
-    switch (this->eFuel) {
-        case PETROL: return string("Petrol");
-        case DIESEL: return string("Diesel");
-
-        case NONE: return string("Unknown");
-    }
-}
-
-Fuel_t Car::getFuel() const {
-    return this->eFuel;
-}
-
