@@ -42,7 +42,8 @@ DoublyLinkedList::DoublyLinkedList(const string& szFilename) {
 
             string label_brand, label_model, label_segment, label_body, 
                     label_yearRange, label_capacity, label_cylinders, 
-                    label_fuel;
+                    label_fuel, label_engine, label_power, label_torque,
+                    label_intake;
         
             // Read each column, trim, and print
             getline(ss, label_brand, ',');
@@ -50,6 +51,10 @@ DoublyLinkedList::DoublyLinkedList(const string& szFilename) {
             getline(ss, label_segment, ',');
             getline(ss, label_body, ',');
             getline(ss, label_yearRange, ',');
+            getline(ss, label_engine, ',');
+            getline(ss, label_power, ',');
+            getline(ss, label_torque, ',');
+            getline(ss, label_intake, ',');
             getline(ss, label_capacity, ',');
             getline(ss, label_cylinders, ',');
             getline(ss, label_fuel, ',');
@@ -60,18 +65,25 @@ DoublyLinkedList::DoublyLinkedList(const string& szFilename) {
             label_segment = this->trimCsvInput(label_segment);
             label_body = this->trimCsvInput(label_body);
             label_yearRange = this->trimCsvInput(label_yearRange);
+            label_engine = this->trimCsvInput(label_engine);
+            label_power = this->trimCsvInput(label_power);
+            label_torque = this->trimCsvInput(label_torque);
+            label_intake = this->trimCsvInput(label_intake);
             label_capacity = this->trimCsvInput(label_capacity);
             label_cylinders = this->trimCsvInput(label_cylinders);
             label_fuel = this->trimCsvInput(label_fuel);
 
             cout << "Databaase contains ";
             cout << label_brand << ", " << label_model << ", " << label_segment << ", " 
-                << label_body << ", " << label_yearRange << ", " << label_capacity << ", " 
-                << label_cylinders << ", " << label_fuel << endl << endl << endl;
+                << label_body << ", " << label_yearRange << ", " << label_engine << ", " 
+                << label_power << ", " << label_torque << ", " << label_intake << ", " 
+                << label_capacity << ", " << label_cylinders << ", " << label_fuel 
+                << endl << endl << endl;
         }
 
         // Processing data rows
-        string brand, model, segment, body, yearRange, capacity, cylinders, fuel;
+        string brand, model, segment, body, yearRange, engine, power,
+                torque, intake, capacity, cylinders, fuel;
         
         // Read each column, trim, and print
         getline(ss, brand, ',');
@@ -79,6 +91,10 @@ DoublyLinkedList::DoublyLinkedList(const string& szFilename) {
         getline(ss, segment, ',');
         getline(ss, body, ',');
         getline(ss, yearRange, ',');
+        getline(ss, engine, ',');
+        getline(ss, power, ',');
+        getline(ss, torque, ',');
+        getline(ss, intake, ',');
         getline(ss, capacity, ',');
         getline(ss, cylinders, ',');
         getline(ss, fuel, ',');
@@ -89,13 +105,19 @@ DoublyLinkedList::DoublyLinkedList(const string& szFilename) {
         segment = this->trimCsvInput(segment);
         body = this->trimCsvInput(body);
         yearRange = this->trimCsvInput(yearRange);
+        engine = this->trimCsvInput(engine);
+        power = this->trimCsvInput(power);
+        torque = this->trimCsvInput(torque);
+        intake = this->trimCsvInput(intake);
         capacity = this->trimCsvInput(capacity);
         cylinders = this->trimCsvInput(cylinders);
         fuel = this->trimCsvInput(fuel);
 
         // Check if all columns are correctly populated
         if (brand.empty() || model.empty() || segment.empty() || body.empty() || 
-            yearRange.empty() || capacity.empty() || cylinders.empty() || fuel.empty()) {
+            yearRange.empty() || capacity.empty() || cylinders.empty() || 
+            fuel.empty() || engine.empty() || power.empty() || torque.empty() ||
+            intake.empty()) {
 #ifdef DEBUG
             cerr << "Warning: Empty field detected in row!" << endl;
 #endif
@@ -107,7 +129,19 @@ DoublyLinkedList::DoublyLinkedList(const string& szFilename) {
             << body << ", " << yearRange << ", " << capacity << ", " 
             << cylinders << ", " << fuel << endl;
 #endif
-        Car newCar(brand, model, segment, body, yearRange, capacity, cylinders, fuel);
+        Car newCar(brand, 
+                    model, 
+                    segment, 
+                    body, 
+                    yearRange, 
+                    Engine(engine,
+                            power,
+                            torque,
+                            intake,
+                            capacity,
+                            cylinders,
+                            fuel));
+
         this->insertAtBeginning(newCar);
     }
 
@@ -135,39 +169,6 @@ DoublyLinkedList::~DoublyLinkedList() {
 
 
 // insert
-void DoublyLinkedList::insertAtBeginning(const string& newBrand, 
-                                        const string& newModel,
-                                        const string& newSegment, 
-                                        const string& newBody,
-                                        uint16_t yearLow, 
-                                        uint16_t yearHigh, 
-                                        float newCapacity,
-                                        uint8_t newCylinders, 
-                                        Fuel_t newFuel)
-{
-    Car* newCar = new Car(newBrand, 
-                            newModel, 
-                            newSegment, 
-                            newBody, 
-                            yearLow, 
-                            yearHigh, 
-                            newCapacity, 
-                            newCylinders, 
-                            newFuel);
-    
-    Node* newNode = new Node{newCar, pHead, NULL};
-
-    if (NULL != pHead) {
-        pHead->pPrev = newNode;
-    }
-
-    pHead = newNode;
-
-    if (NULL == pTail) {
-        pTail = newNode;
-    }
-}
-
 void DoublyLinkedList::insertAtBeginning(const Car& car) {
     Node* newNode = new Node();
 
@@ -181,38 +182,6 @@ void DoublyLinkedList::insertAtBeginning(const Car& car) {
     pHead = newNode;
 
     if(NULL == pTail) {
-        pTail = newNode;
-    }
-}
-
-void DoublyLinkedList::insertAtEnd(const string& newBrand, 
-                                    const string& newModel,
-                                    const string& newSegment, 
-                                    const string& newBody,
-                                    uint16_t yearLow, 
-                                    uint16_t yearHigh, 
-                                    float newCapacity,
-                                    uint8_t newCylinders, 
-                                    Fuel_t newFuel)
-{
-    Car* newCar = new Car(newBrand, 
-                            newModel, 
-                            newSegment, 
-                            newBody, 
-                            yearLow, 
-                            yearHigh, 
-                            newCapacity, 
-                            newCylinders, 
-                            newFuel);
-
-    Node* newNode = new Node{newCar, NULL, pTail};
-
-    if(!pTail) {
-        pTail = newNode;
-        pHead = newNode;
-    } else {
-        newNode->pPrev = pTail;
-        pTail->pNext = newNode;
         pTail = newNode;
     }
 }
@@ -273,23 +242,6 @@ void DoublyLinkedList::deleteTail() {
 
 
 // display
-void DoublyLinkedList::displayCar(Car* pCar) {
-    cout << "                          |" << endl;
-    cout << "|-------------------------------------------------|\n";
-
-    printf("\tBrand:\t\t%s\n", pCar->getBrand().c_str());
-    printf("\tModel:\t\t%s\n", pCar->getModel().c_str());
-    printf("\tSegment:\t%s\n", pCar->getSegment().c_str());
-    printf("\tBody:\t\t%s\n", pCar->getBody().c_str());
-    printf("\tYears:\t\t%d - %d\n", pCar->getYearLow(), pCar->getYearHigh());
-    printf("\tCapacity:\t%0.1f L\n", pCar->getCapacity());
-    printf("\tCylinders:\t%d\n", pCar->getCylinders());
-    printf("\tFuel:\t\t%s\n", pCar->getFuelString().c_str());
-
-    cout << "|-------------------------------------------------|\n";
-    cout << "                          |" << endl;
-}
-
 void DoublyLinkedList::display() {
     if(!pHead) {
         cout << "List is empty." << endl;
@@ -298,7 +250,7 @@ void DoublyLinkedList::display() {
 
     Node* pTemp = pHead;
     while(pTemp) {
-        displayCar(pTemp->pData);
+        pTemp->pData->display();
         pTemp = pTemp->pNext;
     }
 
