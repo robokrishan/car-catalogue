@@ -1,17 +1,15 @@
 #include "engine.h"
 
-using namespace std;
-
 
 // helpers
-static uint16_t s_parseToUint16(const string& input) {
+static uint16_t s_parseToUint16(const std::string& input) {
     try {
         return (uint16_t)stoi(input);
-    } catch (const invalid_argument&) {
-        cerr << "Invalid torque format!" << endl;
+    } catch (const std::invalid_argument&) {
+        std::cerr << "Invalid torque format!" << std::endl;
         return -1;
-    } catch (const out_of_range&) {
-        cerr << "Torque out of range!" << endl;
+    } catch (const std::out_of_range&) {
+        std::cerr << "Torque out of range!" << std::endl;
         return -2;
     }
 }
@@ -36,7 +34,7 @@ Engine::Engine(const Engine& engine) : szName(engine.szName),
                                         ubCylinders(engine.ubCylinders), 
                                         eFuel(engine.eFuel) {}
 
-Engine::Engine(string szNewName, 
+Engine::Engine(std::string szNewName, 
                 uint16_t uwNewPower, 
                 uint16_t uwNewTorque, 
                 Intake_t eNewIntake, 
@@ -51,13 +49,13 @@ Engine::Engine(string szNewName,
                 ubCylinders(ubNewCylinders),
                 eFuel(eNewFuel) {}
 
-Engine::Engine(string szNewName,
-                string szNewPower,
-                string szNewTorque,
-                string szNewIntake,
-                string szNewCapacity,
-                string szNewCylinders,
-                string szNewFuel)
+Engine::Engine(std::string szNewName,
+                std::string szNewPower,
+                std::string szNewTorque,
+                std::string szNewIntake,
+                std::string szNewCapacity,
+                std::string szNewCylinders,
+                std::string szNewFuel)
 {
     this->setName(szNewName);
     this->setPowerHp(szNewPower);
@@ -72,11 +70,11 @@ Engine::~Engine() {}
 
 
 // name
-void Engine::setName(const string& szNewName) {
+void Engine::setName(const std::string& szNewName) {
     this->szName = szNewName;
 }
 
-string Engine::getName() const {
+std::string Engine::getName() const {
     return this->szName;
 }
 
@@ -86,7 +84,7 @@ void Engine::setPowerHp(uint16_t uwNewPower) {
     this->uwPowerHp = uwNewPower;
 }
 
-void Engine::setPowerHp(const string& szNewPower) {
+void Engine::setPowerHp(const std::string& szNewPower) {
     this->uwPowerHp = s_parseToUint16(szNewPower);
 }
 
@@ -100,7 +98,7 @@ void Engine::setTorqueNm(uint16_t uwNewTorque) {
     this->uwTorqueNm = uwNewTorque;
 }
 
-void Engine::setTorqueNm(const string& szNewTorque) {
+void Engine::setTorqueNm(const std::string& szNewTorque) {
     this->uwTorqueNm = s_parseToUint16(szNewTorque);
 }
 
@@ -114,7 +112,7 @@ void Engine::setIntake(Intake_t eIntake) {
     this->eIntake = eIntake;
 }
 
-void Engine::setIntake(const string& szIntake) {
+void Engine::setIntake(const std::string& szIntake) {
     if("turbo charger" == szIntake || 
         "turbocharger" == szIntake || 
         "Turbo charger" == szIntake ||
@@ -140,25 +138,25 @@ Intake_t Engine::getIntake() const {
     return this->eIntake;
 }
 
-string Engine::getIntakeString() const {
+std::string Engine::getIntakeString() const {
     switch(this->eIntake) {
         case TURBO:             return "Turbo Charger";
         case TWIN_TURBO:        return "Twin Turbo";
-        case SUPERCHARGER:      return "Supercharger";
         case STOCK:             
         default:                return "Stock";
+        case SUPERCHARGER:      return "Supercharger";
     }
 }
 
 
 // cubic capacity
-void Engine::setCapacity(const string& newCapacity) {
+void Engine::setCapacity(const std::string& newCapacity) {
     try {
         fCubicCapacity = stof(newCapacity);
-    } catch (const invalid_argument&) {
-        cerr << "Invalid capacity format!" << endl;
-    } catch (const out_of_range&) {
-        cerr << "Capacity out of range!" << endl;
+    } catch (const std::invalid_argument&) {
+        std::cerr << "Invalid capacity format!" << std::endl;
+    } catch (const std::out_of_range&) {
+        std::cerr << "Capacity out of range!" << std::endl;
     }
 }
 
@@ -172,13 +170,13 @@ float Engine::getCapacity() const {
 
 
 // cylinders
-void Engine::setCylinders(const string& newCylinders) {
+void Engine::setCylinders(const std::string& newCylinders) {
     try {
-        ubCylinders = (uint8_t)stoi(newCylinders.c_str());
-    } catch (const invalid_argument&) {
-        cerr << "Invalid number of cylinders format!" << endl;
-    } catch (const out_of_range&) {
-        cerr << "Number of cylinders out of range!" << endl;
+        ubCylinders = (uint8_t)std::stoi(newCylinders.c_str());
+    } catch (const std::invalid_argument&) {
+        std::cerr << "Invalid number of cylinders format!" << std::endl;
+    } catch (const std::out_of_range&) {
+        std::cerr << "Number of cylinders out of range!" << std::endl;
     }
 }
 
@@ -192,7 +190,7 @@ uint8_t Engine::getCylinders() const {
 
 
 // fuel
-void Engine::setFuel(const string& newFuel) {
+void Engine::setFuel(const std::string& newFuel) {
     if (newFuel == "Petrol") {
         this->eFuel = PETROL;
     } else if (newFuel == "Diesel") {
@@ -204,10 +202,10 @@ void Engine::setFuel(const string& newFuel) {
 
 void Engine::setFuel(Fuel_t newFuel) {
     this->eFuel = newFuel;
-    cout << "Set fuel to " << this->getFuelString() << endl;
+    std::cout << "Set fuel to " << this->getFuelString() << std::endl;
 }
 
-string Engine::getFuelString() const {
+std::string Engine::getFuelString() const {
     switch (this->eFuel) {
         case PETROL: return "Petrol";
         case DIESEL: return "Diesel";
