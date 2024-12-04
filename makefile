@@ -6,8 +6,8 @@ CXXFLAGS = -Wall -Wextra -std=c++17 -O2
 TARGET = car_app
 
 # Source and header files
-SRCS = main.cpp linked_list/linked_list.cpp car.cpp doubly_linked_list/doubly_linked_list.cpp
-HEADERS = linked_list/linked_list.h car.h doubly_linked_list/doubly_linked_list.h
+SRCS = main.cpp car.cpp doubly_linked_list/doubly_linked_list.cpp engine.cpp
+HEADERS = car.h doubly_linked_list/doubly_linked_list.h engine.h
 
 # Object files (automatically generated from source files)
 OBJS = $(SRCS:.cpp=.o)
