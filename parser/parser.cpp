@@ -1,8 +1,10 @@
 #include "parser.h"
 #include <sstream>
 #include <fstream>
-#include "linked_list/linked_list.h"
+#include "../linked_list/linked_list.h"
 
+
+// constructors
 Parser::Parser() {
     this->szFilename = "";
     pHeaders = new LinkedList();
@@ -89,10 +91,14 @@ Parser::Parser(const std::string& szNewFilename) {
     database.close();
 }
 
+
+// destructor
 Parser::~Parser() {
 
 }
 
+
+// filename
 void Parser::setFilename(const std::string& szNewFilename) {
     this->szFilename = szNewFilename;
 }
@@ -101,6 +107,8 @@ std::string Parser::getFilename(void) const {
     return this->szFilename;
 }
 
+
+// data processing
 void Parser::extractHeaders(const std::string& szHeaderBuffer) {
     istringstream ss(szHeaderBuffer);
     string szColumn;
@@ -126,6 +134,8 @@ std::string Parser::trimCsvInput(const string& str) {
     return str.substr(first, last - first + 1);
 }
 
+
+// display
 void Parser::display(void) const {
     this->pObjects->display();
 }

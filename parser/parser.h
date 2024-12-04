@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <string>
-#include "car.h"
-#include "linked_list/linked_list.h"
-#include "doubly_linked_list/doubly_linked_list.h"
+#include "../car/car.h"
+#include "../linked_list/linked_list.h"
+#include "../doubly_linked_list/doubly_linked_list.h"
 
 class Parser {
     private:
