@@ -19,7 +19,6 @@ class DoublyLinkedList {
 
     public:
         DoublyLinkedList();
-        DoublyLinkedList(const string& szFilename);
         ~DoublyLinkedList();
 
         void insertAtBeginning(const Car& car);
@@ -27,7 +26,6 @@ class DoublyLinkedList {
         void deleteHead();
         void deleteTail();
         void display();
-        string trimCsvInput(const string& str);
 };
 
 #endif /* DOUBLY_LINKED_LIST_H */
