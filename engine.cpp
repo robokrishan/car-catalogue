@@ -209,10 +209,10 @@ void Engine::setFuel(Fuel_t newFuel) {
 
 string Engine::getFuelString() const {
     switch (this->eFuel) {
-        case PETROL: return string("Petrol");
-        case DIESEL: return string("Diesel");
+        case PETROL: return "Petrol";
+        case DIESEL: return "Diesel";
 
-        case NONE: return string("Unknown");
+        case NONE: return "Unknown";
     }
 }
 
