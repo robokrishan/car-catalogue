@@ -13,8 +13,7 @@ Parser::Parser() {
     uwObjectCount = 0;
 }
 
-Parser::Parser(const std::string& szNewFilename) {
-    *this = Parser();
+Parser::Parser(const std::string& szNewFilename) : Parser() {
     // set filename
     this->setFilename(szNewFilename);
 
@@ -93,8 +92,12 @@ Parser::Parser(const std::string& szNewFilename) {
 
 
 // destructor
-Parser::~Parser() {
+Parser::~Parser() { 
+    delete pHeaders;  
+    delete pObjects;
 
+    pHeaders = NULL;
+    pObjects = NULL;
 }
 
 
