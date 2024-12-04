@@ -25,9 +25,6 @@ DoublyLinkedList::DoublyLinkedList(const string& szFilename) {
         database.read(bom, 3); // Skip BOM
     }
 
-    *this = DoublyLinkedList();
-
-
     string line;
     bool isHeader = true;
     while(getline(database, line)) {
