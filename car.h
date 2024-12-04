@@ -19,7 +19,6 @@ class Car {
     public:
         Car();
         Car(const Car& car);
-        Car(string line_csv);
         Car(string newBrand,
             string newModel,
             string newSegment,

@@ -23,42 +23,6 @@ Car::Car(const Car& car) : szBrand(car.szBrand),
                             sEngine(car.sEngine)
                             {}
 
-Car::Car(string line_csv) {
-    istringstream ss(line_csv);
-
-    string szBrand, szModel, szBody, szSegment, szYearRange;
-    string szEngine, szPower, szTorque, szIntake;
-    string szCubicCapacity, szCylinders, szFuel;
-
-    if (getline(ss, szBrand, ',') && 
-        getline(ss, szModel, ',') &&
-        getline(ss, szSegment, ',') &&
-        getline(ss, szBody, ',') &&
-        getline(ss, szYearRange, ',') &&
-        getline(ss, szEngine, ',') &&
-        getline(ss, szPower, ',') &&
-        getline(ss, szTorque, ',') &&
-        getline(ss, szIntake, ',') &&
-        getline(ss, szCubicCapacity, ',') &&
-        getline(ss, szCylinders, ',') &&
-        getline(ss, szFuel, ',')) {
-        *this = Car(szBrand, 
-                    szModel, 
-                    szSegment, 
-                    szBody, 
-                    szYearRange, 
-                    Engine(szEngine, 
-                            szPower,
-                            szTorque,
-                            szIntake,
-                            szCubicCapacity,
-                            szCylinders,
-                            szFuel));
-    } else {
-        cerr << "Invalid input format!" << endl;
-    }
-}
-
 Car::Car(string newBrand, 
             string newModel, 
             string newSegment, 
@@ -91,6 +55,7 @@ Car::Car(string newBrand,
 
 // destructors
 Car::~Car() {}
+
 
 // brand
 void Car::setBrand(const string& newBrand) {
