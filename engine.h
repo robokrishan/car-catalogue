@@ -29,9 +29,6 @@ class Engine {
         uint8_t ubCylinders;
         Fuel_t eFuel;
 
-        static const string fuelPetrol;
-        static const string fuelDiesel;
-
     public:
         Engine();
         Engine(const Engine& engine);
