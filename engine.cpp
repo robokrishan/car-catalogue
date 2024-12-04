@@ -2,11 +2,22 @@
 
 using namespace std;
 
-// constants
-const string Engine::fuelPetrol = "Petrol";
-const string Engine::fuelDiesel = "Diesel";
+
+// helpers
+static uint16_t s_parseToUint16(const string& input) {
+    try {
+        return (uint16_t)stoi(input);
+    } catch (const invalid_argument&) {
+        cerr << "Invalid torque format!" << endl;
+        return -1;
+    } catch (const out_of_range&) {
+        cerr << "Torque out of range!" << endl;
+        return -2;
+    }
+}
 
 
+// constructors
 Engine::Engine() {
     setName("");
     setPowerHp(-1);
@@ -76,13 +87,7 @@ void Engine::setPowerHp(uint16_t uwNewPower) {
 }
 
 void Engine::setPowerHp(const string& szNewPower) {
-    try {
-        this->uwPowerHp = (uint16_t)stoi(szNewPower);
-    } catch (const invalid_argument&) {
-        cerr << "Invalid horsepower format!" << endl;
-    } catch (const out_of_range&) {
-        cerr << "Horsepower out of range!" << endl;
-    }
+    this->uwPowerHp = s_parseToUint16(szNewPower);
 }
 
 uint16_t Engine::getPowerHp() const {
@@ -96,13 +101,7 @@ void Engine::setTorqueNm(uint16_t uwNewTorque) {
 }
 
 void Engine::setTorqueNm(const string& szNewTorque) {
-    try {
-        this->uwTorqueNm = (uint16_t)stoi(szNewTorque);
-    } catch (const invalid_argument&) {
-        cerr << "Invalid torque format!" << endl;
-    } catch (const out_of_range&) {
-        cerr << "Torque out of range!" << endl;
-    }
+    this->uwTorqueNm = s_parseToUint16(szNewTorque);
 }
 
 uint16_t Engine::getTorqueNm() const {
@@ -194,9 +193,9 @@ uint8_t Engine::getCylinders() const {
 
 // fuel
 void Engine::setFuel(const string& newFuel) {
-    if (newFuel == fuelPetrol) {
+    if (newFuel == "Petrol") {
         this->eFuel = PETROL;
-    } else if (newFuel == fuelDiesel) {
+    } else if (newFuel == "Diesel") {
         this->eFuel = DIESEL;
     } else {
         this->eFuel = NONE;
