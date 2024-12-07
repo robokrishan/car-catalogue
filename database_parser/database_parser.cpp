@@ -84,7 +84,7 @@ bool DatabaseParser::loadFromFile(void) {
     ifstream database(this->szFilename);
     if(!database.is_open()) {
         std::cerr << "Error opening file: " << this->szFilename << std::endl;
-        return;
+        return 0;
     }
 
     // Skip BOM bits
@@ -149,9 +149,15 @@ bool DatabaseParser::loadFromFile(void) {
     }
 
     database.close();
+    
+    return 1;
 }
 
 bool DatabaseParser::buildIndexes(void) {
+    if(vCars.size() < 1) {
+        return 0;
+    }
+
     for (int i = 0; i < vCars.size(); i++) {
         const Car& car = vCars[i];
 
@@ -169,11 +175,13 @@ bool DatabaseParser::buildIndexes(void) {
         this->umCylinders[car.getEngine().getCylinders()].push_back(i);
         this->umFuels[car.getEngine().getFuelString()].push_back(i);
     }
+
+    return 1;
 }
 
-std::string DatabaseParser::trimCsvInput(const string& str) {
+std::string DatabaseParser::trimCsvInput(const std::string& str) {
     size_t first = str.find_first_not_of(" \t\r\n");
-    if (first == string::npos) return ""; // No non-space character
+    if (first == std::string::npos) return ""; // No non-space character
     size_t last = str.find_last_not_of(" \t\r\n");
     return str.substr(first, last - first + 1);
 }
