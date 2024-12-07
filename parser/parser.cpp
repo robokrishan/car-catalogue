@@ -7,10 +7,10 @@
 // constructors
 Parser::Parser() {
     this->szFilename = "";
-    pHeaders = new LinkedList();
-    pObjects = new DoublyLinkedList();
-    ubDimensions = 0;
-    uwObjectCount = 0;
+    this->pHeaders = new LinkedList();
+    this->pObjects = new DoublyLinkedList();
+    this->ubDimensions = 0;
+    this->uwObjectCount = 0;
 }
 
 Parser::Parser(const std::string& szNewFilename) : Parser() {

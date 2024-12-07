@@ -24,11 +24,6 @@ class Parser {
         std::string getFilename(void) const;
         void extractHeaders(const std::string& szHeaders);
         std::string trimCsvInput(const string& szString);
-        
-        Car* parseCar(string szBrand, string szModel, string szSegment,
-                        string szBody, string szYear, string szEngine,
-                        string szPower, string szTorque, string szIntake,
-                        string szCapacity, string szCylinders, string szFuel);
 
         void display(void) const;
 };
