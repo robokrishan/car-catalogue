@@ -52,6 +52,18 @@ class DatabaseParser {
         const std::unordered_map<std::string, std::vector<int>> getFuels(void) const;
         
         std::vector<Car> filterByBrand(const std::string& brand) const;
+        std::vector<Car> filterByModel(const std::string& model) const;
+        std::vector<Car> filterBySegment(const std::string& segment) const;
+        std::vector<Car> filterByBody(const std::string& body) const;
+        std::vector<Car> filterByYearLow(uint16_t year) const;
+        std::vector<Car> filterByYearHigh(uint16_t year) const;
+        std::vector<Car> filterByEngine(const std::string& engine) const;
+        std::vector<Car> filterByPower(uint16_t power) const;
+        std::vector<Car> filterByTorque(uint16_t torque) const;
+        std::vector<Car> filterByIntake(const std::string& intake) const;
+        std::vector<Car> filterByCapacity(const float capacity) const;
+        std::vector<Car> filterByCylinder(const uint8_t cylinder) const;
+        std::vector<Car> filterByFuel(const std::string& fuel) const;
 
         void displayAll(void) const;
 };

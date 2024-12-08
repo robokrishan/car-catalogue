@@ -185,3 +185,152 @@ std::string DatabaseParser::trimCsvInput(const std::string& str) {
     size_t last = str.find_last_not_of(" \t\r\n");
     return str.substr(first, last - first + 1);
 }
+
+void DatabaseParser::displayAll(void) const {
+    for(const auto& car : vCars) {
+        car.display();
+    }
+}
+
+std::vector<Car> DatabaseParser::filterByBrand(const std::string& brand) const {
+    std::vector<Car> result;
+    auto it = umBrands.find(brand);
+    if(it != umBrands.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByModel(const std::string& model) const {
+    std::vector<Car> result;
+    auto it = umModels.find(model);
+    if(it != umModels.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterBySegment(const std::string& segment) const {
+    std::vector<Car> result;
+    auto it = umSegments.find(segment);
+    if(it != umSegments.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByBody(const std::string& body) const {
+    std::vector<Car> result;
+    auto it = umBodies.find(body);
+    if(it != umBodies.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByYearLow(uint16_t year) const {
+    std::vector<Car> result;
+    auto it = umYearLows.find(year);
+    if(it != umYearLows.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByYearHigh(uint16_t year) const {
+    std::vector<Car> result;
+    auto it = umYearHighs.find(year);
+    if(it != umYearHighs.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByEngine(const std::string& engine) const {
+    std::vector<Car> result;
+    auto it = umEngines.find(engine);
+    if(it != umEngines.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByPower(uint16_t power) const {
+    std::vector<Car> result;
+    auto it = umPowers.find(power);
+    if(it != umPowers.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByTorque(uint16_t torque) const {
+    std::vector<Car> result;
+    auto it = umTorques.find(torque);
+    if(it != umTorques.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByIntake(const std::string& intake) const {
+    std::vector<Car> result;
+    auto it = umIntakes.find(intake);
+    if(it != umIntakes.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByCapacity(const float capacity) const {
+    std::vector<Car> result;
+    auto it = umCapacities.find(capacity);
+    if(it != umCapacities.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByCylinder(const uint8_t cylinder) const {
+    std::vector<Car> result;
+    auto it = umCylinders.find(cylinder);
+    if(it != umCylinders.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
+
+std::vector<Car> DatabaseParser::filterByFuel(const std::string& fuel) const {
+    std::vector<Car> result;
+    auto it = umFuels.find(fuel);
+    if(it != umFuels.end()) {
+        for(int index : it->second) {
+            result.push_back(vCars[index]);
+        }
+    }
+    return result;
+}
